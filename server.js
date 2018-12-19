@@ -1,16 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const graphqlHTTP = require('express-graphql');
-const schema = require('./schema.js');
-
-const app = express();
-
-app.use('/graphql',
-    graphqlHTTP({
-        schema,
-        graphiql: true
-    })
-);
+const { ApolloServer, gql } = require('apollo-server-express');
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -22,6 +12,23 @@ mongoose
     .catch(err => console.log(err));
 
 const PORT = process.env.PORT | 4000
+
+const app = express();
+
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!'
+  },
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app });
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
