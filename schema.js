@@ -43,6 +43,12 @@ const RootQuery = new GraphQLObjectType({
                     }
                 }
             }
+        },
+        customers: {
+            type: new GraphQLList(CustomerType),
+            resolve(parent, args) {
+                return customers;
+            }
         }
     }
 });
