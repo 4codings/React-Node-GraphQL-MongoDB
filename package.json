@@ -21,6 +21,7 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "graphql-tools": "^4.0.3",
     "mongoose": "^5.4.0",
     "prop-types": "^15.6.2",
