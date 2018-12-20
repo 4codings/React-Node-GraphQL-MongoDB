@@ -14,14 +14,14 @@ mongoose
     .then(() => console.log('MongoDB Connected ..'))
     .catch(err => console.log(err));
 
-const PORT = process.env.PORT | 4000
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
 const server = new ApolloServer({
     typeDefs: gql(typeDefs),
     resolvers,
-    context: { Customer }
+    context: { Customer },
 });
 server.applyMiddleware({ app });
 
