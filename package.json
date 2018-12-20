@@ -4,7 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "webpack": "webpack-dev-server --mode development ./client/src/index.js --open",
+    "dev": "webpack --mode development ./client/src/index.js --output ./client/dist/bundle.js --open",
+    "client": "concurrently \"npm:dev\" \"npm:webpack\"",
+    "build": "webpack --mode production ./client/src/index.js --output ./client/dist/bundle.js --open",
+    "start": "concurrently \"npm:server\" \"npm:client\""
   },
   "author": "",
   "license": "ISC",
