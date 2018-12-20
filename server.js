@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { ApolloServer, gql } = require('apollo-server-express');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
+const Customer = require('./models/customer');
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -15,19 +18,11 @@ const PORT = process.env.PORT | 4000
 
 const app = express();
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!'
-  },
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+    typeDefs: gql(typeDefs),
+    resolvers,
+    context: { Customer }
+});
 server.applyMiddleware({ app });
 
 app.listen(PORT, () => {
