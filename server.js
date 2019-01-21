@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { ApolloServer, gql } = require('apollo-server-express');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
+const typeDefs = require('./grapql/schema');
+const resolvers = require('./grapql/resolvers');
 const Customer = require('./models/customer');
 
 // DB Config
