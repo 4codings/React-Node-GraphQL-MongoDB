@@ -5,7 +5,6 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import queryString from 'query-string';
 import history from './history';
-import Customers from './components/Customers';
 import router from './router';
 
 const client = new ApolloClient({
@@ -29,7 +28,6 @@ const render = async (location) => {
         ReactDOM.render(
             <ApolloProvider client={client}>
                 <div className="App">
-                    <Customers />
                     {route.component}
                 </div>
             </ApolloProvider>,
