@@ -1,13 +1,13 @@
 const schema = `
     type Customer {
-        id: String
-        name: String
-        email: String
+        id: ID!
+        name: String!
+        email: String!
     }
 
     type Query {
-        customers: [Customer]
-        customer(id: String!): Customer
+        customers: [Customer!]!
+        customer(id: String!): Customer!
     }
 
     type Mutation {
