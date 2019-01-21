@@ -1,6 +1,6 @@
 const schema = `
     type Customer {
-        id: ID!
+        id: String!
         name: String!
         email: String!
     }

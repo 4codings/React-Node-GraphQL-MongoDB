@@ -12,7 +12,7 @@ export const GET_CUSTOMERS = gql`
 
 export const GET_CUSTOMER = gql`
     {
-        customer($id: String!) {
+        customer(id: String) {
             id
             name
             email
