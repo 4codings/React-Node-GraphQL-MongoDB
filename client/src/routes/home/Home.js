@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { GET_CUSTOMERS } from '../../queries';
+import s from './home.css';
 
 class Home extends Component {
     render() {
@@ -13,7 +14,7 @@ class Home extends Component {
                     return (
                         <div>
                             {data.customers.map(customer => (
-                                <div key={customer.id}>
+                                <div className={s.customer} key={customer.id}>
                                     <p>Id: {customer.id}</p>
                                     <p>Name: {customer.name}</p>
                                     <p>E-mail: {customer.email}</p>

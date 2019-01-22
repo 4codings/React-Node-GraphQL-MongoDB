@@ -1,10 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: './client/src/index.html',
-    filename: './index.html',
-});
-
 module.exports = {
     module: {
         rules: [
@@ -18,7 +13,28 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                            sourceMap: true,
+                        },
+                    },
+                    'postcss-loader',
+                ],
+            },
         ],
     },
-    plugins: [htmlPlugin],
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './client/src/index.html',
+            filename: './index.html',
+        }),
+    ],
 };
