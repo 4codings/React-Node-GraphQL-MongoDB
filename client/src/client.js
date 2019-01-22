@@ -28,9 +28,7 @@ const render = async (location) => {
 
         ReactDOM.render(
             <ApolloProvider client={client}>
-                <div className="App">
-                    {route.component}
-                </div>
+                {route.component}
             </ApolloProvider>,
             container,
             () => document.title = route.title,
