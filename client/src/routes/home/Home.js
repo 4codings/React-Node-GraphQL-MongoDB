@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import { GET_CUSTOMERS } from '../queries';
+import { GET_CUSTOMERS } from '../../queries';
 
-class Customers extends Component {
+class Home extends Component {
     render() {
         return (
             <Query query={GET_CUSTOMERS}>
@@ -11,14 +11,15 @@ class Customers extends Component {
                     if (error) console.log(error);
 
                     return (
-                        <ul>
+                        <div>
                             {data.customers.map(customer => (
-                                <li key={customer.id}>
-                                    <p>{customer.name}</p>
-                                    <p>{customer.email}</p>
-                                </li>
+                                <div key={customer.id}>
+                                    <p>Id: {customer.id}</p>
+                                    <p>Name: {customer.name}</p>
+                                    <p>E-mail: {customer.email}</p>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     );
                 }}
             </Query>
@@ -26,4 +27,4 @@ class Customers extends Component {
     }
 }
 
-export default Customers;
+export default Home;
