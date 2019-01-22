@@ -1,5 +1,9 @@
 .customer {
     margin-bottom: 48px;
+
+    p {
+        margin-bottom: 6px;
+    }
 }
 
 .bold {
