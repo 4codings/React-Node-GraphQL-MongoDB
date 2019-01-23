@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import s from './Add.css';
 
 class Add extends Component {
     submit = (values) => {
@@ -18,30 +19,28 @@ class Add extends Component {
                 {({ dirty,
                     isSubmitting,
                     handleChange,
-                    handleSubmit
+                    handleSubmit,
                 }) => (
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name" id="name" style={{ display: 'block' }}>
+                        <label htmlFor="name">
                             Name
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="name"
+                                onChange={handleChange}
+                            />
                         </label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="name"
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="email" id="email" style={{ display: 'block' }}>
+                        <label htmlFor="email">
                             Email
+                            <input
+                                type="text"
+                                id="email"
+                                placeholder="email"
+                                onChange={handleChange}
+                            />
                         </label>
-                        <input
-                            type="text"
-                            name="email"
-                            id="email"
-                            placeholder="email"
-                            onChange={handleChange}
-                        />
-                        <button disabled={!dirty || isSubmitting} type="submit" style={{ display: 'block' }}>Submit</button>
+                        <button disabled={!dirty || isSubmitting} type="submit">Submit</button>
                     </form>
                 )}
             </Formik>
