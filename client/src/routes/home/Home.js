@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { GET_CUSTOMERS } from '../../queries';
+import Link from '../../components/link/Link';
 import s from './home.css';
 
 class Home extends Component {
@@ -20,6 +21,7 @@ class Home extends Component {
                                     <p><span className={s.bold}>E-mail:</span> {customer.email}</p>
                                 </div>
                             ))}
+                            <Link to="/add">Add customer</Link>
                         </div>
                     );
                 }}
