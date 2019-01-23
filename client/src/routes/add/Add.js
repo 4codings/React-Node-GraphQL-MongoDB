@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 import { Formik } from 'formik';
 import { CREATE_CUSTOMER } from '../../queries';
 import s from './Add.css';
 
 class Add extends Component {
+    static propTypes = {
+        createCustomer: PropTypes.func.isRequired,
+    };
+
     submit = (values) => {
         const { createCustomer } = this.props;
         createCustomer({ variables: values });
