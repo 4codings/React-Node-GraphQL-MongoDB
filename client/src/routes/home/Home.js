@@ -13,7 +13,7 @@ class Home extends Component {
 
                     return (
                         <div>
-                            {data.customers.map(customer => (
+                            {data.customers?.map(customer => (
                                 <div className={s.customer} key={customer.id}>
                                     <p><span className={s.bold}>Id:</span> {customer.id}</p>
                                     <p><span className={s.bold}>Name:</span> {customer.name}</p>
