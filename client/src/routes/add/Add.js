@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { compose, graphql } from 'react-apollo';
 import { Formik } from 'formik';
+import { CREATE_CUSTOMER } from '../../queries';
 import s from './Add.css';
 
 class Add extends Component {
     submit = (values) => {
-        console.log(values);
+        const { createCustomer } = this.props;
+        createCustomer({ variables: values });
     }
 
     render() {
@@ -48,4 +51,6 @@ class Add extends Component {
     }
 }
 
-export default Add;
+export default compose(
+    graphql(CREATE_CUSTOMER, { name: 'createCustomer' }),
+)(Add);
