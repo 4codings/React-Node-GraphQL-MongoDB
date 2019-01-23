@@ -14,8 +14,6 @@ mongoose
     .then(() => console.log('MongoDB Connected ..'))
     .catch(err => console.log(err));
 
-const PORT = process.env.PORT || 4000;
-
 const app = express();
 
 const server = new ApolloServer({
@@ -23,7 +21,10 @@ const server = new ApolloServer({
     resolvers,
     context: { Customer },
 });
+
 server.applyMiddleware({ app });
+
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);

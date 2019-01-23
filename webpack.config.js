@@ -1,11 +1,12 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: './client/src/index.html',
-    filename: './index.html',
-});
-
 module.exports = {
+    output: {
+        publicPath: '/',
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[chunkhash].js',
+    },
     module: {
         rules: [
             {
@@ -18,7 +19,33 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[name]__[local]___[hash:base64:5]',
+                            sourceMap: true,
+                        },
+                    },
+                    'postcss-loader',
+                ],
+            },
         ],
     },
-    plugins: [htmlPlugin],
+    devServer: {
+        port: 8081,
+        open: true,
+        historyApiFallback: true,
+    },
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: './client/src/index.html',
+            filename: './index.html',
+        }),
+    ],
 };

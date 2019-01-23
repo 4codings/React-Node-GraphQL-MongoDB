@@ -8,8 +8,12 @@ const routes = {
     },
     children: [
         {
+            path: '/add',
+            load: () => import(/* webpackChunkName: 'add' */ './add'),
+        },
+        {
             path: '/',
-            load: () => import(/* webpackChunkName: 'customers' */ './customers'),
+            load: () => import(/* webpackChunkName: 'home' */ './home'),
         },
     ],
 };

@@ -6,6 +6,7 @@ import { ApolloProvider } from 'react-apollo';
 import queryString from 'query-string';
 import history from './history';
 import router from './router';
+import s from './client.css';
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
@@ -27,9 +28,7 @@ const render = async (location) => {
 
         ReactDOM.render(
             <ApolloProvider client={client}>
-                <div className="App">
-                    {route.component}
-                </div>
+                {route.component}
             </ApolloProvider>,
             container,
             () => document.title = route.title,

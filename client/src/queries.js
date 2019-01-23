@@ -19,3 +19,12 @@ export const GET_CUSTOMER = gql`
         }
     }
 `;
+
+export const CREATE_CUSTOMER = gql`
+    mutation CreateCustomer($name: String!, $email: String!){
+        createCustomer(name: $name, email: $email) {
+            name,
+            email,
+        }
+    }
+`;
