@@ -2,6 +2,7 @@ const routes = {
     path: '/',
     async action({ next }) {
         const route = await next();
+        console.log(route);
         route.title = `${route.title || 'Untitled Page'}`;
         route.description = route.description || '';
         return route;
