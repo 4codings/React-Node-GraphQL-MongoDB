@@ -7,10 +7,13 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js',
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: [/\.js$/, /\.tsx$/],
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',

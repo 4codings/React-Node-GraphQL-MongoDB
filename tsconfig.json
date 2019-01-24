@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "esModuleInterop": true,
+        "pretty": true,
+        "jsx": "react"
+    },
+    "include": [
+        "./client/src/**/*"
+    ]
+}
