@@ -1,12 +1,10 @@
 {
     "compilerOptions": {
-        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
-        "module": "commonjs",
         "noEmit": true,
         "skipLibCheck": true,
         "target": "esnext",
-        "esModuleInterop": true,
         "pretty": true,
         "jsx": "react"
     },
