@@ -9,13 +9,17 @@
     "dev": "webpack --mode development ./client/src/client.js --output ./client/dist/bundle.js --open",
     "client": "concurrently \"npm:dev\" \"npm:webpack\"",
     "build": "webpack --mode production ./client/src/client.js --output ./client/dist/bundle.js --open",
-    "start": "concurrently \"npm:server\" \"npm:client\""
+    "start": "concurrently \"npm:server\" \"npm:client\"",
+    "check-types": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/polyfill": "^7.2.5",
+    "@types/history": "^4.7.2",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
     "apollo-boost": "^0.1.23",
     "apollo-server-express": "^2.3.1",
     "body-parser": "^1.18.3",
@@ -47,8 +51,11 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "css-loader": "^2.1.0",
@@ -63,6 +70,7 @@
     "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.18.9",
-    "postcss-loader": "^3.0.0"
+    "postcss-loader": "^3.0.0",
+    "typescript": "^3.2.4"
   }
 }

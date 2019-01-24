@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "pretty": true,
+        "jsx": "react"
+    },
+    "include": [
+        "./client/src/**/*"
+    ]
+}

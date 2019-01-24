@@ -4,7 +4,8 @@ module.exports = (api) => {
         plugins: [
             '@babel/plugin-proposal-class-properties',
             '@babel/plugin-syntax-dynamic-import',
+            '@babel/plugin-proposal-optional-chaining',
         ],
-        presets: ['@babel/preset-env', '@babel/preset-react'],
+        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/typescript'],
     };
 };

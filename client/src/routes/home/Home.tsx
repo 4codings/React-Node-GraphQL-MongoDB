@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { GET_CUSTOMERS } from '../../queries';
+import Link from '../../components/link/Link';
 import s from './Home.css';
 
 class Home extends Component {
     render() {
         return (
             <Query query={GET_CUSTOMERS}>
-                {({ loading, error, data }) => {
+                {({ loading, error, data }: { loading: boolean, error?: object, data: object }) => {
+                    console.log(data);
                     if (loading) return <p>Loading...</p>;
                     if (error) console.log(error);
 
@@ -20,6 +22,7 @@ class Home extends Component {
                                     <p><span className={s.bold}>E-mail:</span> {customer.email}</p>
                                 </div>
                             ))}
+                            <Link to="/add">Add</Link>
                         </div>
                     );
                 }}
