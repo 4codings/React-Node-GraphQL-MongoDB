@@ -1,11 +1,11 @@
 import React from 'react';
 import Detail from './Detail';
 
-const action = () => ({
+const action = ({ params }) => ({
     chunks: ['detail'],
     title: 'Detail',
     component: (
-        <Detail />
+        <Detail id={params.id} />
     ),
 });
 
