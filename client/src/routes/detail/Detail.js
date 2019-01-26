@@ -8,6 +8,14 @@ class Detail extends Component {
         id: PropTypes.string.isRequired,
     }
 
+    edit = () => {
+        console.log('edit');
+    }
+
+    delete = () => {
+        console.log('delete');
+    }
+
     render() {
         const { id } = this.props;
 
@@ -16,13 +24,15 @@ class Detail extends Component {
                 {({ loading, error, data }) => {
                     if (loading) return <p>Loading...</p>;
                     if (error) console.log(error);
-                    const { customer: { id: customerId, name, email } } = data;
+                    const { customer: { id: _id, name, email } } = data;
 
                     return (
                         <>
-                            <p>{customerId}</p>
+                            <p>{_id}</p>
                             <p>{name}</p>
                             <p>{email}</p>
+                            <button type="button" onClick={this.edit}>Edit</button>
+                            <button type="button" onClick={this.delete}>Delete</button>
                         </>
                     );
                 }}

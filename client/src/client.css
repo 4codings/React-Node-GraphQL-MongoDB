@@ -4,3 +4,7 @@ body {
     padding: 36px;
     font-family: sans-serif;
 }
+
+p {
+    margin-bottom: 6px;
+}
