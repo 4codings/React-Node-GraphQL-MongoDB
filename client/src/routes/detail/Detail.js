@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Query } from 'react-apollo';
-import { GET_CUSTOMER } from '../../queries';
+import { Query, compose, graphql } from 'react-apollo';
+import { GET_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
+
 
 class Detail extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
+        deleteCustomer: PropTypes.func.isRequired,
     }
 
     edit = () => {
         console.log('edit');
     }
 
-    delete = () => {
-        console.log('delete');
+    delete = (id) => {
+        const { deleteCustomer } = this.props;
+        deleteCustomer({ variables: id });
     }
 
     render() {
@@ -41,4 +44,6 @@ class Detail extends Component {
     }
 }
 
-export default Detail;
+export default compose(
+    graphql(DELETE_CUSTOMER, { name: 'deleteCustomer' }),
+)(Detail);
