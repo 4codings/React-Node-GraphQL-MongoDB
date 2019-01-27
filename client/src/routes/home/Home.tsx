@@ -13,15 +13,21 @@ class Home extends Component {
                     if (error) console.log(error);
 
                     return (
-                        <div>
-                            {data.customers.map(customer => (
-                                <Link to={`/${customer.id}`} className={s.customer} key={customer.id}>
-                                    <p><span className={s.bold}>Id:</span> {customer.id}</p>
-                                    <p><span className={s.bold}>Name:</span> {customer.name}</p>
-                                    <p><span className={s.bold}>E-mail:</span> {customer.email}</p>
-                                </Link>
-                            ))}
-                        </div>
+                        <>
+                            <h1>All:</h1>
+                            <div>
+                                {data.customers.map(customer => {
+                                    const { id, name, email } = customer;
+                                    return (
+                                        <Link to={`/${customer.id}`} className={s.customer} key={id}>
+                                            <p><span className={s.bold}>Id:</span> {id}</p>
+                                            <p><span className={s.bold}>Name:</span> {name}</p>
+                                            <p><span className={s.bold}>E-mail:</span> {email}</p>
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        </>
                     );
                 }}
             </Query>

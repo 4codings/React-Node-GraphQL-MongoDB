@@ -3,13 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import queryString from 'query-string';
 import history from './history';
 import router from './router';
 import s from './client.css';
 
+const cache = new InMemoryCache();
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',
+    cache,
 });
 const container = document.getElementById('root');
 
