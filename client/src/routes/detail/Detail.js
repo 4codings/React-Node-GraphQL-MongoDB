@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Query, compose, graphql } from 'react-apollo';
-import { GET_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
+import { GET_CUSTOMER, GET_CUSTOMERS, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
 import Link from '../../components/link/Link.tsx';
 import s from './Detail.css';
@@ -19,7 +19,6 @@ class Detail extends Component {
     delete = (id) => {
         const { deleteCustomer } = this.props;
         deleteCustomer({ variables: id });
-        history.push('/');
     }
 
     render() {
@@ -51,5 +50,19 @@ class Detail extends Component {
 }
 
 export default compose(
-    graphql(DELETE_CUSTOMER, { name: 'deleteCustomer' }),
+    graphql(DELETE_CUSTOMER, {
+        name: 'deleteCustomer',
+        options: {
+            update: (proxy, { data: { deleteCustomer: { id } } }) => {
+                try {
+                    const data = proxy.readQuery({ query: GET_CUSTOMERS });
+                    const index = data.customers.map(customer => customer.id).indexOf(id);
+                    data.customers.splice(index, 1);
+                    history.push('/');
+                } catch (err) {
+                    console.log(err);
+                }
+            },
+        },
+    }),
 )(Detail);
