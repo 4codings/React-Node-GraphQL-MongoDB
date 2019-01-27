@@ -13,7 +13,7 @@ const schema = `
     type Mutation {
         createCustomer(name: String!, email: String!): Customer!
         updateCustomer(id: String!, name: String, email: String): Customer!
-        deleteCustomer(id: String!): Customer!
+        deleteCustomer(id: String!): Customer
     }
 `;
 
