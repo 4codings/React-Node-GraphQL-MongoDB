@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 import { Formik } from 'formik';
 import { CREATE_CUSTOMER } from '../../queries';
+import history from '../../history';
 import s from './Add.css';
 
 class Add extends Component {
@@ -10,9 +11,11 @@ class Add extends Component {
         createCustomer: PropTypes.func.isRequired,
     };
 
-    submit = (values) => {
+    submit = (values, { resetForm }) => {
         const { createCustomer } = this.props;
         createCustomer({ variables: values });
+        resetForm({});
+        history.push('/');
     }
 
     render() {
@@ -25,6 +28,7 @@ class Add extends Component {
                 onSubmit={this.submit}
             >
                 {({ dirty,
+                    values,
                     isSubmitting,
                     handleChange,
                     handleSubmit,
@@ -34,18 +38,20 @@ class Add extends Component {
                             Name
                             <input
                                 type="text"
-                                id="name"
+                                name="name"
                                 placeholder="name"
                                 onChange={handleChange}
+                                value={values.name || ''}
                             />
                         </label>
                         <label htmlFor="email">
                             Email
                             <input
                                 type="text"
-                                id="email"
+                                name="email"
                                 placeholder="email"
                                 onChange={handleChange}
+                                value={values.email || ''}
                             />
                         </label>
                         <button disabled={!dirty || isSubmitting} type="submit">Submit</button>

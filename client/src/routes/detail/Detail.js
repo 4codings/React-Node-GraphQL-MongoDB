@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Query, compose, graphql } from 'react-apollo';
 import { GET_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
-
+import history from '../../history';
 
 class Detail extends Component {
     static propTypes = {
@@ -17,6 +17,7 @@ class Detail extends Component {
     delete = (id) => {
         const { deleteCustomer } = this.props;
         deleteCustomer({ variables: id });
+        history.push('/');
     }
 
     render() {
@@ -35,7 +36,7 @@ class Detail extends Component {
                             <p>{name}</p>
                             <p>{email}</p>
                             <button type="button" onClick={this.edit}>Edit</button>
-                            <button type="button" onClick={this.delete}>Delete</button>
+                            <button type="button" onClick={() => this.delete()}>Delete</button>
                         </>
                     );
                 }}
