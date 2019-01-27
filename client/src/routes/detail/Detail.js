@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Query, compose, graphql } from 'react-apollo';
 import { GET_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
+import Link from '../../components/link/Link.tsx';
+import s from './Detail.css';
 
 class Detail extends Component {
     static propTypes = {
@@ -32,11 +34,14 @@ class Detail extends Component {
 
                     return (
                         <>
-                            <p>{_id}</p>
-                            <p>{name}</p>
-                            <p>{email}</p>
+                            <div className={s.customer}>
+                                <p><span style={{ fontWeight: 'bold' }}>Id:</span> {_id}</p>
+                                <p><span style={{ fontWeight: 'bold' }}>Name:</span> {name}</p>
+                                <p><span style={{ fontWeight: 'bold' }}>E-mail:</span> {email}</p>
+                            </div>
                             <button type="button" onClick={this.edit}>Edit</button>
                             <button type="button" onClick={() => this.delete()}>Delete</button>
+                            <Link to="/">Back</Link>
                         </>
                     );
                 }}
