@@ -53,11 +53,13 @@ export default compose(
     graphql(DELETE_CUSTOMER, {
         name: 'deleteCustomer',
         options: {
-            update: (proxy, { data: { deleteCustomer: { id } } }) => {
+            update: (cache, { data: { deleteCustomer: { id } } }) => {
                 try {
-                    const data = proxy.readQuery({ query: GET_CUSTOMERS });
-                    const index = data.customers.map(customer => customer.id).indexOf(id);
-                    data.customers.splice(index, 1);
+                    const { customers } = cache.readQuery({ query: GET_CUSTOMERS });
+                    cache.writeQuery({
+                        query: GET_CUSTOMERS,
+                        data: { customers: customers.filter(customer => customer.id !== id) },
+                    });
                     history.push('/');
                 } catch (err) {
                     console.log(err);
