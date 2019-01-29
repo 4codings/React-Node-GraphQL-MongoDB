@@ -29,6 +29,7 @@ module.exports = {
         "react/jsx-one-expression-per-line": 0,
         "react/prefer-stateless-function": 0,
         "react/jsx-indent-props": [1, 4],
+        "react/no-multi-comp": 0,
         "function-paren-newline": 0,
         "no-return-assign": 0,
         "no-unused-expressions": 0,

@@ -8,8 +8,8 @@ import queryString from 'query-string';
 import history from './history';
 import router from './router';
 import { ModalProvider } from './context';
-import Modal from './components/modal/Modal';
 import s from './client.css';
+import Modal from './components/modal/Modal';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
@@ -34,8 +34,8 @@ const render = async (location) => {
         ReactDOM.render(
             <ApolloProvider client={client}>
                 <ModalProvider>
-                    {route.component}
                     <Modal />
+                    {route.component}
                 </ModalProvider>
             </ApolloProvider>,
             container,
