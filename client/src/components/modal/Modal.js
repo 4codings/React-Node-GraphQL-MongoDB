@@ -25,7 +25,7 @@ class Modal extends Component {
 
 export class Edit extends Component {
     submit = () => {
-        console.log('saved');
+        console.log('Saved');
     };
 
     render() {
@@ -77,8 +77,24 @@ export class Edit extends Component {
     }
 }
 
-export const Delete = () => (
-    <h1>Delete this item?</h1>
-);
+export class Delete extends Component {
+    delete = () => {
+        console.log('Deleted');
+    }
+
+    cancel = () => {
+        console.log('Canceled');
+    }
+
+    render() {
+        return (
+            <>
+                <h1>Delete this item?</h1>
+                <button type="submit" onClick={this.delete}>Delete</button>
+                <button type="submit" onClick={this.cancel}>Cancel</button>
+            </>
+        );
+    }
+}
 
 export default Modal;
