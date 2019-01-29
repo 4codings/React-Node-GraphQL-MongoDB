@@ -6,11 +6,13 @@ class Modal extends Component {
     render() {
         return (
             <ModalConsumer>
-                {({ content: Content }) => (
-                    Content && (
+                {({ name, close }) => (
+                    name && (
                         <div className={s.modal}>
                             <div className={s.modalInner}>
-                                <Content />
+                                <button type="button" className={s.close} onClick={() => close()}>X</button>
+                                { name === 'edit' && <Edit />}
+                                { name === 'delete' && <Delete />}
                             </div>
                         </div>
                     )
@@ -19,5 +21,13 @@ class Modal extends Component {
         );
     }
 }
+
+export const Edit = () => (
+    <h1>Edit data</h1>
+);
+
+export const Delete = () => (
+    <h1>Are you sure you want to delete this item?</h1>
+);
 
 export default Modal;

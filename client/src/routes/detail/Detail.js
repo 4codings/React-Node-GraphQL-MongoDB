@@ -5,7 +5,6 @@ import { GET_CUSTOMER, GET_CUSTOMERS, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
 import Link from '../../components/link/Link.tsx';
 import { ModalConsumer } from '../../context';
-import EditModal from '../../components/modal/EditModal';
 import s from './Detail.css';
 
 class Detail extends Component {
@@ -41,9 +40,13 @@ class Detail extends Component {
                                 <p><span style={{ fontWeight: 'bold' }}>E-mail:</span> {email}</p>
                             </div>
                             <ModalConsumer>
-                                {({ open }) => <button type="button" onClick={() => open(EditModal)}>Edit</button>}
+                                {({ open }) => (
+                                    <>
+                                        <button type="button" onClick={() => open('edit')}>Edit</button>
+                                        <button type="button" onClick={() => open('delete')}>Delete</button>
+                                    </>
+                                )}
                             </ModalConsumer>
-                            <button type="button" onClick={() => this.delete()}>Delete</button>
                             <Link to="/">Back</Link>
                         </>
                     );

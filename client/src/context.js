@@ -9,31 +9,31 @@ export class ModalProvider extends Component {
     };
 
     state = {
-        content: null,
+        name: '',
     }
 
-    openModal = (content) => {
+    openModal = (name) => {
         this.setState({
-            content,
+            name,
         });
     };
 
     closeModal = () => {
         this.setState({
-            content: null,
+            name: '',
         });
     };
 
     render() {
         const { children } = this.props;
-        const { content } = this.state;
+        const { name } = this.state;
 
         return (
             <ModalContext.Provider
                 value={{
                     open: this.openModal,
                     close: this.closeModal,
-                    content,
+                    name,
                 }}
             >
                 {children}
