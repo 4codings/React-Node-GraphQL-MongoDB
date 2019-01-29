@@ -4,6 +4,7 @@ import { Query, compose, graphql } from 'react-apollo';
 import { GET_CUSTOMER, GET_CUSTOMERS, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
 import Link from '../../components/link/Link.tsx';
+import { ModalConsumer } from '../../context';
 import s from './Detail.css';
 
 class Detail extends Component {
@@ -38,8 +39,14 @@ class Detail extends Component {
                                 <p><span style={{ fontWeight: 'bold' }}>Name:</span> {name}</p>
                                 <p><span style={{ fontWeight: 'bold' }}>E-mail:</span> {email}</p>
                             </div>
-                            <button type="button" onClick={this.edit}>Edit</button>
-                            <button type="button" onClick={() => this.delete()}>Delete</button>
+                            <ModalConsumer>
+                                {({ open }) => (
+                                    <>
+                                        <button type="button" onClick={() => open('edit')}>Edit</button>
+                                        <button type="button" onClick={() => open('delete')}>Delete</button>
+                                    </>
+                                )}
+                            </ModalConsumer>
                             <Link to="/">Back</Link>
                         </>
                     );
