@@ -8,9 +8,9 @@ class Modal extends Component {
             <ModalConsumer>
                 {({ name, close }) => (
                     name && (
-                        <div className={s.modal}>
-                            <div className={s.modalInner}>
-                                <button type="button" className={s.close} onClick={() => close()}>X</button>
+                        <div className={s.modal} onClick={close}>
+                            <div className={s.modalInner} onClick={e => e.stopPropagation()}>
+                                <button type="button" className={s.close} onClick={close}>X</button>
                                 { name === 'edit' && <Edit />}
                                 { name === 'delete' && <Delete />}
                             </div>
