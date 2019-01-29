@@ -7,6 +7,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import queryString from 'query-string';
 import history from './history';
 import router from './router';
+import { ModalProvider } from './context';
 import s from './client.css';
 
 const cache = new InMemoryCache();
@@ -31,7 +32,9 @@ const render = async (location) => {
 
         ReactDOM.render(
             <ApolloProvider client={client}>
-                {route.component}
+                <ModalProvider>
+                    {route.component}
+                </ModalProvider>
             </ApolloProvider>,
             container,
             () => document.title = route.title,
