@@ -1,12 +1,7 @@
 import React, { Component, createContext } from 'react';
 import PropTypes from 'prop-types';
 
-export const ModalContext = createContext({
-    component: null,
-    props: {},
-    showModal: () => {},
-    hideModal: () => {},
-});
+export const ModalContext = createContext();
 
 export class ModalProvider extends Component {
     static propTypes = {
@@ -14,32 +9,31 @@ export class ModalProvider extends Component {
     };
 
     state = {
-        component: null,
-        props: {},
+        content: null,
     }
 
-    showModal = (component, props = {}) => {
+    openModal = (content) => {
         this.setState({
-            component,
-            props,
+            content,
         });
     };
 
-    hideModal = () => {
-
+    closeModal = () => {
+        this.setState({
+            content: null,
+        });
     };
 
     render() {
         const { children } = this.props;
-        const { component, props } = this.state;
+        const { content } = this.state;
 
         return (
             <ModalContext.Provider
                 value={{
                     open: this.openModal,
                     close: this.closeModal,
-                    component,
-                    props,
+                    content,
                 }}
             >
                 {children}

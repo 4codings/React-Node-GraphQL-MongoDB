@@ -5,11 +5,14 @@ class Modal extends Component {
     render() {
         return (
             <ModalContext.Consumer>
-                {({ component: Component, props, close }) => {
-                    return (
-                        Component ? <Component {...props} onClose={close} /> : null
-                    );
-                }}
+                {({ content, close }) => (
+                    content && (
+                        <>
+                            <h1>{content}</h1>
+                            <button type="button" onClick={() => close()}>Close</button>
+                        </>
+                    ))
+                }
             </ModalContext.Consumer>
         );
     }

@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import history from './history';
 import router from './router';
 import { ModalProvider } from './context';
+import Modal from './components/modal/Modal';
 import s from './client.css';
 
 const cache = new InMemoryCache();
@@ -34,6 +35,7 @@ const render = async (location) => {
             <ApolloProvider client={client}>
                 <ModalProvider>
                     {route.component}
+                    <Modal />
                 </ModalProvider>
             </ApolloProvider>,
             container,
