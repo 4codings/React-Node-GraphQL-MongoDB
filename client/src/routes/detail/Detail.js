@@ -4,7 +4,8 @@ import { Query, compose, graphql } from 'react-apollo';
 import { GET_CUSTOMER, GET_CUSTOMERS, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
 import Link from '../../components/link/Link.tsx';
-import { ModalContext } from '../../context';
+import { ModalConsumer } from '../../context';
+import EditModal from '../../components/modal/EditModal';
 import s from './Detail.css';
 
 class Detail extends Component {
@@ -39,17 +40,11 @@ class Detail extends Component {
                                 <p><span style={{ fontWeight: 'bold' }}>Name:</span> {name}</p>
                                 <p><span style={{ fontWeight: 'bold' }}>E-mail:</span> {email}</p>
                             </div>
-                            <button type="button" onClick={this.edit}>Edit</button>
+                            <ModalConsumer>
+                                {({ open }) => <button type="button" onClick={() => open(EditModal)}>Edit</button>}
+                            </ModalConsumer>
                             <button type="button" onClick={() => this.delete()}>Delete</button>
                             <Link to="/">Back</Link>
-                            <ModalContext.Consumer>
-                                {({ open }) => (
-                                    <>
-                                        <button type="button" onClick={() => open('Modal 1 is now open')}>Open Modal 1</button>
-                                        <button type="button" onClick={() => open('Modal 2 is now open')}>Open Modal 2</button>
-                                    </>
-                                )}
-                            </ModalContext.Consumer>
                         </>
                     );
                 }}

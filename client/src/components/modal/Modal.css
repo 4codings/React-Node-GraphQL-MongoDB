@@ -1,0 +1,20 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f2f2f;
+    opacity: 0.9;
+}
+
+.modalInner {
+    width: 500px;
+    height: 300px;
+    padding: 36px;
+    background-color: #fff;
+    border-radius: 5px;
+}

@@ -41,3 +41,5 @@ export class ModalProvider extends Component {
         );
     }
 }
+
+export const ModalConsumer = ModalContext.Consumer;
