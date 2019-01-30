@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { compose, graphql } from 'react-apollo';
 import { Formik } from 'formik';
-import { ModalConsumer } from '../../context';
+import { ModalContext, ModalConsumer } from '../../context';
+import { DELETE_CUSTOMER, GET_CUSTOMERS } from '../../queries';
+import history from '../../history';
 import s from './Modal.css';
 
+
 class Modal extends Component {
+    static propTypes = {
+        deleteCustomer: PropTypes.func.isRequired,
+    }
+
     render() {
+        const { deleteCustomer } = this.props;
         return (
             <ModalConsumer>
                 {({ name, close }) => (
@@ -13,7 +23,7 @@ class Modal extends Component {
                             <div className={s.modalInner} onClick={e => e.stopPropagation()}>
                                 <button type="button" className={s.close} onClick={close}>X</button>
                                 { name === 'edit' && <Edit />}
-                                { name === 'delete' && <Delete />}
+                                { name === 'delete' && <Delete deleteCustomer={deleteCustomer} />}
                             </div>
                         </div>
                     )
@@ -78,12 +88,25 @@ export class Edit extends Component {
 }
 
 export class Delete extends Component {
+    static propTypes = {
+        deleteCustomer: PropTypes.func.isRequired,
+    }
+
+    static contextType = ModalContext;
+
     delete = () => {
-        console.log('Deleted');
+        const { close } = this.context;
+        const { deleteCustomer } = this.props;
+        const { location: { pathname } } = history;
+        const id = pathname.substring(1);
+
+        close();
+        deleteCustomer({ variables: { id } });
     }
 
     cancel = () => {
-        console.log('Canceled');
+        const { close } = this.context;
+        close();
     }
 
     render() {
@@ -97,4 +120,22 @@ export class Delete extends Component {
     }
 }
 
-export default Modal;
+export default compose(
+    graphql(DELETE_CUSTOMER, {
+        name: 'deleteCustomer',
+        options: {
+            update: (cache, { data: { deleteCustomer: { id } } }) => {
+                try {
+                    const { customers } = cache.readQuery({ query: GET_CUSTOMERS });
+                    cache.writeQuery({
+                        query: GET_CUSTOMERS,
+                        data: { customers: customers.filter(customer => customer.id !== id) },
+                    });
+                    history.push('/');
+                } catch (err) {
+                    console.log(err);
+                }
+            },
+        },
+    }),
+)(Modal);
