@@ -29,6 +29,15 @@ export const CREATE_CUSTOMER = gql`
     }
 `;
 
+export const UPDATE_CUSTOMER = gql`
+    mutation UpdateCustomer($id: String!, $name: String, $email: String){
+        updateCustomer(id: $id, name: $name, email: $email) {
+            name,
+            email,
+        }
+    }
+`;
+
 export const DELETE_CUSTOMER = gql`
     mutation DeleteCustomer($id: String!){
         deleteCustomer(id: $id) {

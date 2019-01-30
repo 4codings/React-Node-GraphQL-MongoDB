@@ -34,8 +34,11 @@ class Modal extends Component {
 }
 
 export class Edit extends Component {
-    submit = () => {
-        console.log('Saved');
+    submit = (values) => {
+        const { location: { pathname } } = history;
+        const id = pathname.substring(1);
+        console.log(values);
+        console.log(id);
     };
 
     render() {
