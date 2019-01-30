@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Query, compose, graphql } from 'react-apollo';
-import { GET_CUSTOMER, GET_CUSTOMERS, DELETE_CUSTOMER } from '../../queries';
-import history from '../../history';
+import { Query } from 'react-apollo';
+import { GET_CUSTOMER } from '../../queries';
 import Link from '../../components/link/Link.tsx';
 import { ModalConsumer } from '../../context';
 import s from './Detail.css';
@@ -10,16 +9,6 @@ import s from './Detail.css';
 class Detail extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
-        deleteCustomer: PropTypes.func.isRequired,
-    }
-
-    edit = () => {
-        console.log('edit');
-    }
-
-    delete = (id) => {
-        const { deleteCustomer } = this.props;
-        deleteCustomer({ variables: id });
     }
 
     render() {
@@ -56,22 +45,4 @@ class Detail extends Component {
     }
 }
 
-export default compose(
-    graphql(DELETE_CUSTOMER, {
-        name: 'deleteCustomer',
-        options: {
-            update: (cache, { data: { deleteCustomer: { id } } }) => {
-                try {
-                    const { customers } = cache.readQuery({ query: GET_CUSTOMERS });
-                    cache.writeQuery({
-                        query: GET_CUSTOMERS,
-                        data: { customers: customers.filter(customer => customer.id !== id) },
-                    });
-                    history.push('/');
-                } catch (err) {
-                    console.log(err);
-                }
-            },
-        },
-    }),
-)(Detail);
+export default Detail;
