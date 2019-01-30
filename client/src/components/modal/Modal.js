@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { compose, graphql } from 'react-apollo';
 import { Formik } from 'formik';
 import { ModalContext, ModalConsumer } from '../../context';
-import { DELETE_CUSTOMER, GET_CUSTOMERS } from '../../queries';
+import { GET_CUSTOMERS, UPDATE_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
 import history from '../../history';
 import s from './Modal.css';
 
@@ -14,7 +14,7 @@ class Modal extends Component {
     }
 
     render() {
-        const { deleteCustomer } = this.props;
+        const { updateCustomer, deleteCustomer } = this.props;
         return (
             <ModalConsumer>
                 {({ name, close }) => (
@@ -22,7 +22,7 @@ class Modal extends Component {
                         <div className={s.modal} onClick={close}>
                             <div className={s.modalInner} onClick={e => e.stopPropagation()}>
                                 <button type="button" className={s.close} onClick={close}>X</button>
-                                { name === 'edit' && <Edit />}
+                                { name === 'edit' && <Edit updateCustomer={updateCustomer} />}
                                 { name === 'delete' && <Delete deleteCustomer={deleteCustomer} />}
                             </div>
                         </div>
@@ -34,11 +34,19 @@ class Modal extends Component {
 }
 
 export class Edit extends Component {
+    static propTypes = {
+        updateCustomer: PropTypes.func.isRequired,
+    }
+
     submit = (values) => {
         const { location: { pathname } } = history;
         const id = pathname.substring(1);
+        const { updateCustomer } = this.props;
+
         console.log(values);
-        console.log(id);
+        // updateCustomer({
+        //     variables: { id, values },
+        // });
     };
 
     render() {
@@ -141,4 +149,5 @@ export default compose(
             },
         },
     }),
+    graphql(UPDATE_CUSTOMER, { name: 'updateCustomer' }),
 )(Modal);
