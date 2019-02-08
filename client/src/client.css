@@ -16,9 +16,13 @@ p {
 }
 
 button {
-    margin: 0 12px 24px 0;
-    border: 1px solid #000;
     padding: 4px 12px;
+    margin: 0 12px 24px 0;
     font-size: 12px;
     cursor: pointer;
+    border: 1px solid #000;
+
+    &:focus {
+        outline: 0;
+    }
 }

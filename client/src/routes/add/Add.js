@@ -56,7 +56,7 @@ class Add extends Component {
                                     value={values.email || ''}
                                 />
                             </label>
-                            <button disabled={!dirty || isSubmitting} type="submit">Submit</button>
+                            <button disabled={!dirty || isSubmitting} type="submit">Add</button>
                         </form>
                         <Link to="/">Back</Link>
                     </>

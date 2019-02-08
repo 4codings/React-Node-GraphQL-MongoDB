@@ -2,13 +2,24 @@
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #2f2f2f;
     opacity: 0.9;
+
+    label {
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    input {
+        display: block;
+        padding: 6px;
+        margin: 6px 0 24px;
+    }
 }
 
 .modalInner {
@@ -22,20 +33,38 @@
 
 .close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 0;
+    top: 15px;
+    right: 15px;
+    padding: 10px;
     margin: 0;
-    font-size: 16px;
+    cursor: pointer;
     border: none;
 }
 
-label {
-    display: block;
+.close:before,
+.close:after {
+    position: absolute;
+    top: 1px;
+    left: 9px;
+    width: 2px;
+    height: 18px;
+    content: '';
+    background-color: #000;
 }
 
-input {
-    display: block;
-    margin: 6px 0 24px;
-    padding: 6px;
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+
+.buttons {
+    position: absolute;
+    bottom: 36px;
+
+    button {
+        margin-bottom: 0;
+    }
 }
