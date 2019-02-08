@@ -8,8 +8,8 @@ import queryString from 'query-string';
 import history from './history';
 import router from './router';
 import { ModalProvider } from './context';
-import s from './client.css';
 import Modal from './components/modal';
+import s from './client.css';
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({

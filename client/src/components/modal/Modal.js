@@ -39,15 +39,18 @@ export class Edit extends Component {
         updateCustomer: PropTypes.func.isRequired,
     }
 
+    static contextType = ModalContext;
+
     submit = (values) => {
+        const { close } = this.context;
         const { location: { pathname } } = history;
         const id = pathname.substring(1);
         const { updateCustomer } = this.props;
 
-        console.log(values);
-        // updateCustomer({
-        //     variables: { id, values },
-        // });
+        close();
+        updateCustomer({
+            variables: { id, ...values },
+        });
     };
 
     render() {
