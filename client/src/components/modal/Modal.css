@@ -40,3 +40,12 @@
     font-size: 16px;
     border: none;
 }
+
+.buttons {
+    position: absolute;
+    bottom: 36px;
+
+    button {
+        margin-bottom: 0;
+    }
+}

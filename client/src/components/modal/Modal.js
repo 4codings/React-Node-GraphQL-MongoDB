@@ -107,7 +107,9 @@ export class Edit extends Component {
                                                     value={values.email || ''}
                                                 />
                                             </label>
-                                            <button disabled={!dirty || isSubmitting} type="submit">Save</button>
+                                            <div className={s.buttons}>
+                                                <button disabled={!dirty || isSubmitting} type="submit">Save</button>
+                                            </div>
                                         </form>
                                     </>
                                 )}
@@ -146,8 +148,10 @@ export class Delete extends Component {
         return (
             <>
                 <h1>Delete this item?</h1>
-                <button type="submit" onClick={this.delete}>Delete</button>
-                <button type="submit" onClick={this.cancel}>Cancel</button>
+                <div className={s.buttons}>
+                    <button type="submit" onClick={this.delete}>Delete</button>
+                    <button type="submit" onClick={this.cancel}>Cancel</button>
+                </div>
             </>
         );
     }
