@@ -9,6 +9,17 @@
     align-items: center;
     background-color: #2f2f2f;
     opacity: 0.9;
+
+    label {
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    input {
+        display: block;
+        margin: 6px 0 24px;
+        padding: 6px;
+    }
 }
 
 .modalInner {
@@ -28,14 +39,4 @@
     margin: 0;
     font-size: 16px;
     border: none;
-}
-
-label {
-    display: block;
-}
-
-input {
-    display: block;
-    margin: 6px 0 24px;
-    padding: 6px;
 }

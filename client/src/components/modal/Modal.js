@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose, graphql } from 'react-apollo';
+import { compose, graphql, Query } from 'react-apollo';
 import { Formik } from 'formik';
 import { ModalContext, ModalConsumer } from '../../context';
-import { GET_CUSTOMERS, UPDATE_CUSTOMER, DELETE_CUSTOMER } from '../../queries';
+import {
+    GET_CUSTOMER,
+    GET_CUSTOMERS,
+    UPDATE_CUSTOMER,
+    DELETE_CUSTOMER,
+} from '../../queries';
 import history from '../../history';
 import s from './Modal.css';
 
@@ -54,50 +59,63 @@ export class Edit extends Component {
     };
 
     render() {
+        const { location: { pathname } } = history;
+        const id = pathname.substring(1);
+
         return (
-            <>
-                <h1>Edit data</h1>
-                <Formik
-                    initialValues={{
-                        name: '',
-                        email: '',
-                    }}
-                    onSubmit={this.submit}
-                >
-                    {({ dirty,
-                        values,
-                        isSubmitting,
-                        handleChange,
-                        handleSubmit,
-                    }) => (
+            <Query query={GET_CUSTOMER} variables={{ id }}>
+                {({ loading, error, data }) => {
+                    if (loading) return <p>Loading...</p>;
+                    if (error) console.log(error);
+                    const { customer: { name, email } } = data;
+
+                    return (
                         <>
-                            <form onSubmit={handleSubmit}>
-                                <label htmlFor="name">
-                                    Name
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="name"
-                                        onChange={handleChange}
-                                        value={values.name || ''}
-                                    />
-                                </label>
-                                <label htmlFor="email">
-                                    Email
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        placeholder="email"
-                                        onChange={handleChange}
-                                        value={values.email || ''}
-                                    />
-                                </label>
-                                <button disabled={!dirty || isSubmitting} type="submit">Save</button>
-                            </form>
+                            <h1>Edit data</h1>
+                            <Formik
+                                initialValues={{
+                                    name,
+                                    email,
+                                }}
+                                onSubmit={this.submit}
+                            >
+                                {({ dirty,
+                                    values,
+                                    isSubmitting,
+                                    handleChange,
+                                    handleSubmit,
+                                }) => (
+                                    <>
+                                        <form onSubmit={handleSubmit}>
+                                            <label htmlFor="name">
+                                                Name
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    placeholder="name"
+                                                    onChange={handleChange}
+                                                    value={values.name || ''}
+                                                />
+                                            </label>
+                                            <label htmlFor="email">
+                                                Email
+                                                <input
+                                                    type="text"
+                                                    name="email"
+                                                    placeholder="email"
+                                                    onChange={handleChange}
+                                                    value={values.email || ''}
+                                                />
+                                            </label>
+                                            <button disabled={!dirty || isSubmitting} type="submit">Save</button>
+                                        </form>
+                                    </>
+                                )}
+                            </Formik>
                         </>
-                    )}
-                </Formik>
-            </>
+                    );
+                }}
+            </Query>
         );
     }
 }
