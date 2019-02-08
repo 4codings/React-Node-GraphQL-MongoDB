@@ -11,6 +11,7 @@ import s from './Modal.css';
 class Modal extends Component {
     static propTypes = {
         deleteCustomer: PropTypes.func.isRequired,
+        updateCustomer: PropTypes.func.isRequired,
     }
 
     render() {
