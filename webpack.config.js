@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
     output: {
@@ -49,6 +50,9 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: './client/src/index.html',
             filename: './index.html',
+        }),
+        new StyleLintPlugin({
+            files: ['src/**/*.css'],
         }),
     ],
 };
