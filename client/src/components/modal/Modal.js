@@ -27,7 +27,7 @@ class Modal extends Component {
                     name && (
                         <div className={s.modal} onClick={close}>
                             <div className={s.modalInner} onClick={e => e.stopPropagation()}>
-                                <button type="button" className={s.close} onClick={close}>X</button>
+                                <button type="button" className={s.close} onClick={close} />
                                 { name === 'edit' && <Edit updateCustomer={updateCustomer} />}
                                 { name === 'delete' && <Delete deleteCustomer={deleteCustomer} />}
                             </div>

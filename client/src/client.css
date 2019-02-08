@@ -21,4 +21,8 @@ button {
     padding: 4px 12px;
     font-size: 12px;
     cursor: pointer;
+
+    &:focus {
+        outline: 0;
+    }
 }
