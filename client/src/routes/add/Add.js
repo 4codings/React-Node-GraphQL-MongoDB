@@ -40,6 +40,7 @@ class Add extends Component {
                                 Name
                                 <input
                                     type="text"
+                                    id="name"
                                     name="name"
                                     placeholder="name"
                                     onChange={handleChange}
@@ -50,6 +51,7 @@ class Add extends Component {
                                 Email
                                 <input
                                     type="text"
+                                    id="email"
                                     name="email"
                                     placeholder="email"
                                     onChange={handleChange}

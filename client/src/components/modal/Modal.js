@@ -91,6 +91,7 @@ export class Edit extends Component {
                                                 Name
                                                 <input
                                                     type="text"
+                                                    id="name"
                                                     name="name"
                                                     placeholder="name"
                                                     onChange={handleChange}
@@ -101,6 +102,7 @@ export class Edit extends Component {
                                                 Email
                                                 <input
                                                     type="text"
+                                                    id="email"
                                                     name="email"
                                                     placeholder="email"
                                                     onChange={handleChange}
