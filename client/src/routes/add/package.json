@@ -2,5 +2,5 @@
   "name": "Add",
   "version": "0.0.0",
   "private": true,
-  "main": "./Add.js"
+  "main": "./index.js"
 }
