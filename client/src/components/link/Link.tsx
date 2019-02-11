@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import history from '../../history';
-import * as s from './Link.css';
+import s from './Link.css';
 
 export interface LinkProps {
   to: string;
