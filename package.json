@@ -10,7 +10,13 @@
     "client": "concurrently \"npm:dev\" \"npm:webpack\"",
     "build": "webpack --mode production ./client/src/client.js --output ./client/dist/bundle.js --open",
     "start": "concurrently \"npm:server\" \"npm:client\"",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "test": "jest --watchAll --verbose false"
+  },
+  "jest": {
+    "moduleNameMapper": {
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -60,6 +66,8 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -70,8 +78,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.1.0",
     "nodemon": "^1.18.9",
     "postcss-loader": "^3.0.0",
+    "react-test-renderer": "^16.8.1",
     "stylelint": "^9.10.1",
     "stylelint-config-recess-order": "^2.0.1",
     "stylelint-webpack-plugin": "^0.10.5",
