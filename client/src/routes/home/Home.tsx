@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { GET_CUSTOMERS } from '../../queries';
 import Link from '../../components/link';
+import Counter from '../../components/counter';
 import s from './Home.css';
 
 class Home extends Component {
@@ -27,6 +28,7 @@ class Home extends Component {
                                     )
                                 })}
                             </div>
+                            <Counter />
                         </>
                     );
                 }}
