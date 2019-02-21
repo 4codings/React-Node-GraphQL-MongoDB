@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import useToggle from '../../hooks/useToggle';
 
 const EditableItem = ({ label, initialValue }) => {
     const [value, setValue] = useState(initialValue);
-    const [editorVisible, setEditorVisible] = useState(false);
-
-    const toggleEditor = () => {
-        setEditorVisible(!editorVisible);
-    };
+    const [editorVisible, toggleEditor] = useToggle(false);
 
     useEffect(() => {
         console.log(value);
