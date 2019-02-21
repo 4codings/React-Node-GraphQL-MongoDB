@@ -22,7 +22,8 @@ module.exports = {
     "plugins": [
         "react",
         "import",
-        "html"
+        "html",
+        "react-hooks"
     ],
     "rules": {
         "react/jsx-filename-extension": 0,
@@ -35,6 +36,7 @@ module.exports = {
         "no-unused-expressions": 0,
         "no-underscore-dangle": 0,
         "object-curly-newline": 0,
+        "react-hooks/rules-of-hooks": "error",
         "indent": [
             "error", 4
         ],
