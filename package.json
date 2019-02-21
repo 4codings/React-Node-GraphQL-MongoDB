@@ -15,7 +15,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-        "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(css|less)$": "identity-obj-proxy"
     }
   },
   "author": "",
@@ -46,9 +46,9 @@
     "postcss-preset-env": "^6.5.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.2.0",
-    "react": "^16.6.3",
+    "react": "^16.8.3",
     "react-apollo": "^2.3.3",
-    "react-dom": "^16.6.3",
+    "react-dom": "^16.8.3",
     "style-loader": "^0.23.1",
     "universal-router": "^8.0.0",
     "webpack": "^4.28.0",
