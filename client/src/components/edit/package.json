@@ -1,0 +1,6 @@
+{
+  "name": "EditableItem",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./EditableItem.js"
+}
