@@ -40,7 +40,7 @@
     "graphql-tools": "^4.0.3",
     "history": "^4.7.2",
     "mongoose": "^5.4.0",
-    "postcss": "^7.0.14",
+    "postcss": "^8.2.10",
     "postcss-css-reset": "^1.0.2",
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.1.1",
